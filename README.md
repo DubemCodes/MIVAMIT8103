@@ -4,7 +4,7 @@ MIT 8103 - Advanced Database Systems
 
 ## Case study — Simulated Naira Wallet Platform
 
-A fictional fintech supports internal naira transfers. Customers send funds and view history, operations staff trace transfer references, and reconciliation staff inspect debit and credit entries. The system stores customers, wallets, transfer requests and ledger entries. Data in this repository is synthetic.
+This fictional fintech lets users transfer naira internally. Customers can send money and check their transaction history. Operations staff track transfer references, while reconciliation staff review debit and credit entries. The system keeps records of customers, wallets, transfer requests, and ledger entries. All data here is synthetic.
 
 | Activity | Evidence |
 |---|---|
