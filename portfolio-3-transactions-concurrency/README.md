@@ -1,10 +1,10 @@
 # Portfolio 3 — Transactions and concurrency
 
-Use a fresh training database with the Portfolio 1 schema. Run the three SQL files in order using `psql -X -v ON_ERROR_STOP=1 -f <file>`, starting with `post-transfer.sql`, then `seed.sql`, then `transaction-checks.sql`. The script intentionally raises an error after a provisional debit and then removes that debit by rolling back. The seed is intended for one run per fresh database.
+Start with a new training database that uses the Portfolio 1 schema. Run the three SQL files in order with psql -X -v ON_ERROR_STOP=1 -f <file>. Begin with post-transfer.sql, then run seed.sql, and finally transaction-checks.sql. The script will raise an error after a provisional debit and then roll back to remove it. Only run the seed once for each new database.
 
-The function locks the request, then locks both wallets in ascending ID order. It updates the two balances, writes the two ledger directions and changes transfer status as a single unit. It returns early for an already completed request and rejects a failed request or insufficient funds.
+The function first locks the request, then locks both wallets by ascending ID. It updates both balances, records the two ledger entries, and changes the transfer status all at once. If the request is already completed, it returns early. It also rejects requests that have failed or do not have enough funds.
 
-For the concurrency check, open two psql sessions against the same training database. In session A run:
+To check for concurrency, open two psql sessions connected to the same training database. In session A, run:
 
 ```sql
 BEGIN ISOLATION LEVEL READ COMMITTED;
