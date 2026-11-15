@@ -1,0 +1,15 @@
+PostgreSQL 18.6 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+BEGIN
+CREATE
+CREATE
+CREATE
+CREATE
+COMMIT
+PASS: valid ₦3,000 transfer recorded as pending
+PASS: self-transfer rejected by transfers_distinct_wallets
+PASS: duplicate reference rejected by transfers_reference_unique
+PASS: unknown destination wallet rejected by transfers_destination_fk
+PASS: zero transfer amount rejected by transfers_positive_amount
+BEGIN
+DO
+ROLLBACK

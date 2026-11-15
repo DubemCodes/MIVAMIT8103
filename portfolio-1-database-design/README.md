@@ -17,7 +17,7 @@ erDiagram
 
 Every wallet has one owner. Every transfer has one source and one destination. A pending or failed transfer has no ledger entries. A completed transfer has exactly one debit against its source wallet and one credit against its destination wallet.
 
-## Proposed relational schema
+## Relational schema
 
 | Table | Primary key | Other columns and keys |
 |---|---|---|
@@ -49,4 +49,5 @@ Each field holds one value, and ledger entries are separate rows, satisfying 1NF
 | Insert a transfer with an unknown wallet ID | Rejected by the foreign key |
 | Complete a ₦3,000 transfer with starting balances of ₦10,000 and ₦2,000 | Final balances of ₦7,000 and ₦5,000, with two ledger entries |
 
-These are expected results. PostgreSQL scripts and run evidence will be added during implementation. This design draft was prepared with ChatGPT assistance and is ready for student review.
+In a fresh PostgreSQL training database, run `01-schema.sql` once, then `02-constraint-checks.sql` in the same database. With psql, use `psql -X -v ON_ERROR_STOP=1 -f <file>`. See [the PostgreSQL output](postgresql-output.txt) for the measured constraint checks. The final scenario in the table belongs to Portfolio 3.
+
