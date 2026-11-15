@@ -1,0 +1,95 @@
+BEGIN
+INSERT
+INSERT
+INSERT
+ANALYZE
+BEFORE INDEX
+Limit  (cost=2397.60..2397.62 rows=10 width=32) (actual time=5.965..5.967 rows=10.00 loops=1)
+  Buffers: shared hit=1141
+  InitPlan 1
+    ->  Index Scan using transfers_reference_unique on transfers transfers_1  (cost=0.42..8.44 rows=1 width=8) (actual time=0.011..0.012 rows=1.00 loops=1)
+          Index Cond: (request_reference = 'benchmark-1'::text)
+          Index Searches: 1
+          Buffers: shared hit=4
+  ->  Sort  (cost=2389.16..2389.41 rows=100 width=32) (actual time=5.963..5.964 rows=10.00 loops=1)
+        Sort Key: transfers.created_at DESC, transfers.transfer_id DESC
+        Sort Method: top-N heapsort  Memory: 26kB
+        Buffers: shared hit=1141
+        ->  Seq Scan on transfers  (cost=0.00..2387.00 rows=100 width=32) (actual time=0.021..5.938 rows=100.00 loops=1)
+              Filter: (source_wallet_id = (InitPlan 1).col1)
+              Rows Removed by Filter: 99900
+              Buffers: shared hit=1141
+Planning:
+  Buffers: shared hit=55
+Planning Time: 0.230 ms
+Execution Time: 5.986 ms
+CREATE
+AFTER INDEX
+Limit  (cost=8.85..47.82 rows=10 width=32) (actual time=0.150..0.163 rows=10.00 loops=1)
+  Buffers: shared hit=14 read=3
+  InitPlan 1
+    ->  Index Scan using transfers_reference_unique on transfers transfers_1  (cost=0.42..8.44 rows=1 width=8) (actual time=0.013..0.014 rows=1.00 loops=1)
+          Index Cond: (request_reference = 'benchmark-1'::text)
+          Index Searches: 1
+          Buffers: shared hit=4
+  ->  Index Scan using transfers_sent_history_idx on transfers  (cost=0.42..390.09 rows=100 width=32) (actual time=0.149..0.161 rows=10.00 loops=1)
+        Index Cond: (source_wallet_id = (InitPlan 1).col1)
+        Index Searches: 1
+        Buffers: shared hit=14 read=3
+Planning:
+  Buffers: shared hit=4 read=1
+Planning Time: 0.161 ms
+Execution Time: 0.177 ms
+[
+  {
+    "request_reference": "benchmark-99001",
+    "amount_kobo": "109001",
+    "created_at": "2026-03-10T18:01:00.000Z"
+  },
+  {
+    "request_reference": "benchmark-98001",
+    "amount_kobo": "108001",
+    "created_at": "2026-03-10T01:21:00.000Z"
+  },
+  {
+    "request_reference": "benchmark-97001",
+    "amount_kobo": "107001",
+    "created_at": "2026-03-09T08:41:00.000Z"
+  },
+  {
+    "request_reference": "benchmark-96001",
+    "amount_kobo": "106001",
+    "created_at": "2026-03-08T16:01:00.000Z"
+  },
+  {
+    "request_reference": "benchmark-95001",
+    "amount_kobo": "105001",
+    "created_at": "2026-03-07T23:21:00.000Z"
+  },
+  {
+    "request_reference": "benchmark-94001",
+    "amount_kobo": "104001",
+    "created_at": "2026-03-07T06:41:00.000Z"
+  },
+  {
+    "request_reference": "benchmark-93001",
+    "amount_kobo": "103001",
+    "created_at": "2026-03-06T14:01:00.000Z"
+  },
+  {
+    "request_reference": "benchmark-92001",
+    "amount_kobo": "102001",
+    "created_at": "2026-03-05T21:21:00.000Z"
+  },
+  {
+    "request_reference": "benchmark-91001",
+    "amount_kobo": "101001",
+    "created_at": "2026-03-05T04:41:00.000Z"
+  },
+  {
+    "request_reference": "benchmark-90001",
+    "amount_kobo": "100001",
+    "created_at": "2026-03-04T12:01:00.000Z"
+  }
+]
+ROLLBACK
