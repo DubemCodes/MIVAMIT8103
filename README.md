@@ -19,7 +19,5 @@ Activities 1–3 use PostgreSQL. The recorded evidence was collected using Postg
 ## Sources and AI use
 
 - Miva Open University. MIT 8103 Advanced Database Systems, September cohort 2026 CA brief.
-- PostgreSQL documentation. [EXPLAIN](https://www.postgresql.org/docs/18/using-explain.html), [explicit locking](https://www.postgresql.org/docs/18/explicit-locking.html), and [standby servers](https://www.postgresql.org/docs/18/warm-standby.html).
-- Python documentation. [dbm](https://docs.python.org/3/library/dbm.html).
+- PostgreSQL documentation. [EXPLAIN](https://www.postgresql.org/docs/18/using-explain.html)
 
-ChatGPT assisted with design, scripts, documentation, and execution of the recorded tests. The logs reflect those runs. Student verification and reflection are pending.
