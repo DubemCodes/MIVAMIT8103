@@ -1,0 +1,5 @@
+Backend: dbm.ndbm
+commit-demo [{"type": "requested", "amount_kobo": 300000, "currency": "NGN"}, {"type": "completed", "ledger_entries": 2}]
+rollback-demo [{"type": "requested", "amount_kobo": 100000, "currency": "NGN"}, {"type": "posting_attempt_failed", "reason": "Injected failure after debit"}]
+PASS: stored histories reopened and queried by reference
+PASS: unknown reference returned an empty history
