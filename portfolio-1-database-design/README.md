@@ -2,7 +2,7 @@
 
 ## Simulated Naira Wallet Platform
 
-Customers send naira to other wallets and view their transfer history. Operations staff trace transfer requests, and reconciliation staff compare completed transfers with their debit and credit entries. The database stores customers, wallets, transfer requests and ledger entries. All examples are synthetic. Funding, withdrawals, card payments and transfers to external banks are outside this exercise.
+Customers can send naira to other wallets and check their transfer history. Operations staff track transfer requests, while reconciliation staff match completed transfers with their debit and credit records. The database keeps information on customers, wallets, transfer requests, and ledger entries. All examples used here are synthetic. This exercise does not cover funding, withdrawals, card payments, or transfers to external banks.
 
 ## Entity relationships
 
