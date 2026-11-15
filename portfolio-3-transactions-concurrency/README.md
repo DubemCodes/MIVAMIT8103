@@ -20,4 +20,4 @@ SET lock_timeout = '500ms';
 SELECT post_transfer(transfer_id) FROM transfers WHERE request_reference = 'concurrency-demo';
 ```
 
-After B reports the lock timeout, commit in A. Check transfer status and ledger counts. In [the measured PostgreSQL run](postgresql-output.txt), the completed transfer left the sender and recipient at ₦7,000 and ₦5,000, with two ledger entries. The injected failure rolled back a provisional ₦1,000 debit. Session B was cancelled with SQLSTATE 55P03 and its transfer stayed pending with zero ledger rows. The evidence was collected through two PostgreSQL client connections.
+Once B reports the lock timeout, commit the transaction in A. Then, review the transfer status and ledger counts. In the PostgreSQL test, the completed transfer resulted in the sender having ₦7,000 and the recipient ₦5,000, with two ledger entries recorded. When a failure was injected, a provisional ₦1,000 debit was rolled back. Session B was cancelled with SQLSTATE 55P03, and its transfer remained pending with no ledger rows. All evidence was gathered using two PostgreSQL client connections.
