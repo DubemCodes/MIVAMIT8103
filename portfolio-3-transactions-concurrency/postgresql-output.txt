@@ -1,0 +1,39 @@
+CREATE
+INSERT
+INSERT
+INSERT
+Isolation: read committed
+COMMIT
+Provisional sender balance: 600000
+Injected failure after debit [P0001]
+ROLLBACK
+[
+  {
+    "display_name": "Demo recipient",
+    "balance_kobo": "500000"
+  },
+  {
+    "display_name": "Demo sender",
+    "balance_kobo": "700000"
+  }
+]
+Session A acquired the sender row lock
+Session B: canceling statement due to lock timeout [55P03] after 503 ms
+Session A: COMMIT
+[
+  {
+    "request_reference": "commit-demo",
+    "status": "completed",
+    "ledger_count": 2
+  },
+  {
+    "request_reference": "concurrency-demo",
+    "status": "pending",
+    "ledger_count": 0
+  },
+  {
+    "request_reference": "rollback-demo",
+    "status": "pending",
+    "ledger_count": 0
+  }
+]
